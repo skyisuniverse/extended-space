@@ -12,11 +12,11 @@ export default function Ads() {
         {dict.ads}
       </Typography>
       <Typography variant="h6" color="text.secondary" gutterBottom>
-        Advertising center
+        {dict.adsSubtitle}
       </Typography>
       <Box sx={{ mt: 6 }}>
         <Typography variant="body1" paragraph>
-          Create, manage, and track your advertisements and campaigns.
+          {dict.adsDescription}
         </Typography>
       </Box>
     </Container>

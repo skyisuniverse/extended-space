@@ -12,11 +12,11 @@ export default function Music() {
         {dict.music}
       </Typography>
       <Typography variant="h6" color="text.secondary" gutterBottom>
-        Your music collection
+        {dict.musicSubtitle}
       </Typography>
       <Box sx={{ mt: 6 }}>
         <Typography variant="body1" paragraph>
-          Listen to playlists, discover new tracks, and manage your music library.
+          {dict.musicDescription}
         </Typography>
       </Box>
     </Container>

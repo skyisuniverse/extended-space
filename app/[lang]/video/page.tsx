@@ -12,11 +12,11 @@ export default function Video() {
         {dict.video}
       </Typography>
       <Typography variant="h6" color="text.secondary" gutterBottom>
-        Video hub
+        {dict.videoSubtitle}
       </Typography>
       <Box sx={{ mt: 6 }}>
         <Typography variant="body1" paragraph>
-          Watch videos, live streams, and manage your video library.
+          {dict.videoDescription}
         </Typography>
       </Box>
     </Container>

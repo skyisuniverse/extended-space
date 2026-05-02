@@ -12,11 +12,11 @@ export default function Bookmarks() {
         {dict.bookmarks}
       </Typography>
       <Typography variant="h6" color="text.secondary" gutterBottom>
-        Saved items
+        {dict.bookmarksSubtitle}
       </Typography>
       <Box sx={{ mt: 6 }}>
         <Typography variant="body1" paragraph>
-          All your bookmarked posts, articles, profiles, and content.
+          {dict.bookmarksDescription}
         </Typography>
       </Box>
     </Container>

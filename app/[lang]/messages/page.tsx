@@ -12,11 +12,11 @@ export default function Messages() {
         {dict.messages}
       </Typography>
       <Typography variant="h6" color="text.secondary" gutterBottom>
-        Your inbox
+        {dict.messagesSubtitle}
       </Typography>
       <Box sx={{ mt: 6 }}>
         <Typography variant="body1" paragraph>
-          Chat with friends, view conversations, and manage your messages.
+          {dict.messagesDescription}
         </Typography>
       </Box>
     </Container>

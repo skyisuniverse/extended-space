@@ -12,11 +12,11 @@ export default function Files() {
         {dict.files}
       </Typography>
       <Typography variant="h6" color="text.secondary" gutterBottom>
-        File storage
+        {dict.filesSubtitle}
       </Typography>
       <Box sx={{ mt: 6 }}>
         <Typography variant="body1" paragraph>
-          Upload, organize, and access all your files and documents.
+          {dict.filesDescription}
         </Typography>
       </Box>
     </Container>

@@ -12,11 +12,11 @@ export default function Photos() {
         {dict.photos}
       </Typography>
       <Typography variant="h6" color="text.secondary" gutterBottom>
-        Your photo library
+        {dict.photosSubtitle}
       </Typography>
       <Box sx={{ mt: 6 }}>
         <Typography variant="body1" paragraph>
-          Upload, organize, and share your photos and albums.
+          {dict.photosDescription}
         </Typography>
       </Box>
     </Container>

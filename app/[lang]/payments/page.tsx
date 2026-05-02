@@ -12,11 +12,11 @@ export default function Payments() {
         {dict.payments}
       </Typography>
       <Typography variant="h6" color="text.secondary" gutterBottom>
-        Payment center
+        {dict.paymentsSubtitle}
       </Typography>
       <Box sx={{ mt: 6 }}>
         <Typography variant="body1" paragraph>
-          View transactions, manage payment methods, and check your balance.
+          {dict.paymentsDescription}
         </Typography>
       </Box>
     </Container>

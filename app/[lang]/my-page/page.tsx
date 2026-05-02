@@ -12,11 +12,11 @@ export default function MyPage() {
         {dict.myPage}
       </Typography>
       <Typography variant="h6" color="text.secondary" gutterBottom>
-        Welcome back!
+        {dict.myPageSubtitle}
       </Typography>
       <Box sx={{ mt: 6 }}>
         <Typography variant="body1" paragraph>
-          This is your personal dashboard. Here you can view your profile, recent activity, friends online, and quick actions.
+          {dict.myPageDescription}
         </Typography>
       </Box>
     </Container>

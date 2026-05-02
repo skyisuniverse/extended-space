@@ -12,11 +12,11 @@ export default function Friends() {
         {dict.friends}
       </Typography>
       <Typography variant="h6" color="text.secondary" gutterBottom>
-        Your connections
+        {dict.friendsSubtitle}
       </Typography>
       <Box sx={{ mt: 6 }}>
         <Typography variant="body1" paragraph>
-          Manage your friends list, send friend requests, and see who’s online.
+          {dict.friendsDescription}
         </Typography>
       </Box>
     </Container>

@@ -12,11 +12,11 @@ export default function Products() {
         {dict.products}
       </Typography>
       <Typography variant="h6" color="text.secondary" gutterBottom>
-        Marketplace products
+        {dict.productsSubtitle}
       </Typography>
       <Box sx={{ mt: 6 }}>
         <Typography variant="body1" paragraph>
-          Browse and manage products you sell or have purchased.
+          {dict.productsDescription}
         </Typography>
       </Box>
     </Container>

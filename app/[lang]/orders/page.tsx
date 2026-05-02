@@ -12,11 +12,11 @@ export default function Orders() {
         {dict.orders}
       </Typography>
       <Typography variant="h6" color="text.secondary" gutterBottom>
-        Your orders
+        {dict.ordersSubtitle}
       </Typography>
       <Box sx={{ mt: 6 }}>
         <Typography variant="body1" paragraph>
-          Track your orders, view purchase history, and manage deliveries.
+          {dict.ordersDescription}
         </Typography>
       </Box>
     </Container>

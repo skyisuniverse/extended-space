@@ -12,11 +12,11 @@ export default function Jobs() {
         {dict.jobs}
       </Typography>
       <Typography variant="h6" color="text.secondary" gutterBottom>
-        Job board
+        {dict.jobsSubtitle}
       </Typography>
       <Box sx={{ mt: 6 }}>
         <Typography variant="body1" paragraph>
-          Find job opportunities, manage applications, and explore career options.
+          {dict.jobsDescription}
         </Typography>
       </Box>
     </Container>

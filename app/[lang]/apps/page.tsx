@@ -12,11 +12,11 @@ export default function Apps() {
         {dict.apps}
       </Typography>
       <Typography variant="h6" color="text.secondary" gutterBottom>
-        Installed applications
+        {dict.appsSubtitle}
       </Typography>
       <Box sx={{ mt: 6 }}>
         <Typography variant="body1" paragraph>
-          Browse and manage all your installed apps and mini-applications.
+          {dict.appsDescription}
         </Typography>
       </Box>
     </Container>

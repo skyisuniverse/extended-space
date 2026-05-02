@@ -12,11 +12,11 @@ export default function Games() {
         {dict.games}
       </Typography>
       <Typography variant="h6" color="text.secondary" gutterBottom>
-        Game center
+        {dict.gamesSubtitle}
       </Typography>
       <Box sx={{ mt: 6 }}>
         <Typography variant="body1" paragraph>
-          Play games, see your achievements, and connect with other gamers.
+          {dict.gamesDescription}
         </Typography>
       </Box>
     </Container>

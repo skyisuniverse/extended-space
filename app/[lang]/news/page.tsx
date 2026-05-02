@@ -12,11 +12,11 @@ export default function News() {
         {dict.news}
       </Typography>
       <Typography variant="h6" color="text.secondary" gutterBottom>
-        Latest updates from your network
+        {dict.newsSubtitle}
       </Typography>
       <Box sx={{ mt: 6 }}>
         <Typography variant="body1" paragraph>
-          Stay updated with posts from friends, communities, and trending topics in your feed.
+          {dict.newsDescription}
         </Typography>
       </Box>
     </Container>

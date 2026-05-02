@@ -12,11 +12,11 @@ export default function Communities() {
         {dict.communities}
       </Typography>
       <Typography variant="h6" color="text.secondary" gutterBottom>
-        Groups & communities
+        {dict.communitiesSubtitle}
       </Typography>
       <Box sx={{ mt: 6 }}>
         <Typography variant="body1" paragraph>
-          Browse, join, and manage communities you are part of.
+          {dict.communitiesDescription}
         </Typography>
       </Box>
     </Container>
