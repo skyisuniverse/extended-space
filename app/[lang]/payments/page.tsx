@@ -3,20 +3,20 @@
 import { Container, Typography, Box } from '@mui/material';
 import { useNavigation } from '@/app/[lang]/contexts/navigation-context';
 
-export default function Products() {
+export default function Payments() {
   const { dict } = useNavigation();
 
   return (
     <Container maxWidth="xl" sx={{ py: 5 }}>
       <Typography variant="h3" component="h1" gutterBottom>
-        {dict.products}
+        {dict.payments}
       </Typography>
       <Typography variant="h6" color="text.secondary" gutterBottom>
-        Marketplace products
+        Payment center
       </Typography>
       <Box sx={{ mt: 6 }}>
         <Typography variant="body1" paragraph>
-          Browse and manage products you sell or have purchased.
+          View transactions, manage payment methods, and check your balance.
         </Typography>
       </Box>
     </Container>

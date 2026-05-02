@@ -146,9 +146,9 @@ export default function ADRTopBar({
         </Box> */}
 
         {/* Right side: Language switcher + R&D Center link */}
-        {/* <Box sx={{ display: 'flex', alignItems: 'center', ml: 'auto' }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', ml: 'auto' }}>
           <LanguageSwitcher />
-          <Typography
+          {/* <Typography
             variant="h6"
             noWrap
             component="div"
@@ -162,8 +162,8 @@ export default function ADRTopBar({
             >
               R&D Center
             </Link>
-          </Typography>
-        </Box> */}
+          </Typography> */}
+        </Box>
       </Toolbar>
     </StyledAppBar>
   );

@@ -4,29 +4,39 @@ import {
   Box,
   Drawer,
   List,
+  ListItem,
   ListItemButton,
+  ListItemIcon,
   ListItemText,
-  ListSubheader,
   Divider,
   IconButton,
   styled,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  type SelectChangeEvent,
-  Collapse,
+  Badge,
 } from '@mui/material';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ExpandLess from '@mui/icons-material/ExpandLess';
-import ExpandMore from '@mui/icons-material/ExpandMore';
+
+// Meaningful social-network icons
+import HomeIcon from '@mui/icons-material/Home';
+import FeedIcon from '@mui/icons-material/Feed';
+import MessageIcon from '@mui/icons-material/Message';
+import PeopleIcon from '@mui/icons-material/People';
+import GroupsIcon from '@mui/icons-material/Groups';
+import PhotoLibraryIcon from '@mui/icons-material/PhotoLibrary';
+import MusicNoteIcon from '@mui/icons-material/MusicNote';
+import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
+import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
+import AppsIcon from '@mui/icons-material/Apps';
+import PaymentsIcon from '@mui/icons-material/Payments';
+import WorkIcon from '@mui/icons-material/Work';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import StorefrontIcon from '@mui/icons-material/Storefront';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
+import FolderIcon from '@mui/icons-material/Folder';
+import CampaignIcon from '@mui/icons-material/Campaign';
+
 import Link from 'next/link';
-import { usePathname, useParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { useNavigation } from '@/app/[lang]/contexts/navigation-context';
-import { ADRItem } from '../types/adr';
-import Stack from '@mui/material/Stack';
-import { StatusChip } from './StatusChip';
-import * as React from 'react';
 
 export const drawerWidth = 240;
 
@@ -56,13 +66,28 @@ export default function ResponsiveDrawer(props: Props) {
   } = props;
 
   const pathname = usePathname();
-  const { lang } = useParams() as { lang: string };
+  const { localize, dict } = useNavigation();
 
-  const getLocalizedHref = (href: string): string => {
-    if (!href.startsWith('/')) href = '/' + href;
-    if (href.startsWith(`/${lang}/`)) return href;
-    return `/${lang}${href}`;
-  };
+  // All navigation items – translations are now pulled from dict
+  const navItems = [
+    { key: 'myPage', Icon: HomeIcon },
+    { key: 'news', Icon: FeedIcon },
+    { key: 'messages', Icon: MessageIcon, badge: true },
+    { key: 'friends', Icon: PeopleIcon },
+    { key: 'communities', Icon: GroupsIcon },
+    { key: 'photos', Icon: PhotoLibraryIcon },
+    { key: 'music', Icon: MusicNoteIcon },
+    { key: 'games', Icon: SportsEsportsIcon },
+    { key: 'video', Icon: VideoLibraryIcon },
+    { key: 'apps', Icon: AppsIcon },
+    { key: 'payments', Icon: PaymentsIcon },
+    { key: 'jobs', Icon: WorkIcon },
+    { key: 'orders', Icon: ShoppingCartIcon },
+    { key: 'products', Icon: StorefrontIcon },
+    { key: 'bookmarks', Icon: BookmarkIcon },
+    { key: 'files', Icon: FolderIcon },
+    { key: 'ads', Icon: CampaignIcon },
+  ];
 
   const drawerContent = (onClose: () => void) => (
     <div>
@@ -74,87 +99,34 @@ export default function ResponsiveDrawer(props: Props) {
 
       <Divider />
 
-      {/* <Box sx={{ p: 2 }}>
-        <FormControl fullWidth>
-          <InputLabel id="category-select-label">Select Category</InputLabel>
-          <Select
-            labelId="category-select-label"
-            id="category-select"
-            value={selectedCategoryId}
-            label="Select Category"
-            onChange={handleCategoryChange}
-          >
-            {localizedCategories.map((category) => (
-              <MenuItem key={category.id} value={category.id}>
-                {category.name}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-      </Box>
-
-      <Divider /> */}
-
-      {/* <List>
-        <ListSubheader component="div" id="nested-list-subheader">
-          {selectedCategory.name}
-        </ListSubheader>
-
-        {selectedCategory.adrs.map((adrItem) => {
-          const decisions: ADRItem[] = adrsListMap[adrItem.slug] || [];
-          const isOpen = expandedAdrSlug === adrItem.slug;
+      <List>
+        {navItems.map(({ key, Icon, badge = false }) => {
+          // Convert key to kebab-case for URL (myPage → my-page)
+          const slug = key.replace(/([A-Z])/g, '-$1').toLowerCase();
+          const localizedHref = localize(`/${slug}`);
 
           return (
-            <React.Fragment key={adrItem.slug}>
+            <ListItem key={key} disablePadding>
               <ListItemButton
-                selected={currentSlug === adrItem.slug}
-                onClick={() => handleAdrHeaderClick(adrItem.slug)}
+                component={Link}
+                href={localizedHref}
+                selected={pathname === localizedHref}
               >
-                <ListItemText primary={adrItem.label} />
-                <IconButton
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleToggle(adrItem.slug);
-                  }}
-                >
-                  {isOpen ? <ExpandLess /> : <ExpandMore />}
-                </IconButton>
+                <ListItemIcon>
+                  {badge ? (
+                    <Badge badgeContent={4} color="primary">
+                      <Icon />
+                    </Badge>
+                  ) : (
+                    <Icon />
+                  )}
+                </ListItemIcon>
+                <ListItemText primary={dict[key] ?? key} />
               </ListItemButton>
-
-              <Collapse in={isOpen} timeout="auto" unmountOnExit>
-                <List component="div" disablePadding>
-                  {decisions.map((decision: ADRItem) => {
-                    const localizedHref = getLocalizedHref(decision.link);
-
-                    const translatedTitle = decisionDict[decision.title] ?? decision.title;
-
-                    return (
-                      <ListItemButton
-                        key={decision.link}
-                        component={Link}
-                        href={localizedHref}
-                        selected={pathname === localizedHref}
-                        sx={{ pl: 4 }}
-                      >
-                        <Stack spacing={2} sx={{ width: '100%' }}>
-                          <ListItemText
-                            primary={translatedTitle}
-                            secondary={decision.date}
-                          />
-                          <StatusChip 
-                            status={decision.status} 
-                            dict={decisionDict}
-                          />
-                        </Stack>
-                      </ListItemButton>
-                    );
-                  })}
-                </List>
-              </Collapse>
-            </React.Fragment>
+            </ListItem>
           );
         })}
-      </List> */}
+      </List>
     </div>
   );
 
@@ -164,7 +136,7 @@ export default function ResponsiveDrawer(props: Props) {
     <Box
       component="nav"
       sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-      aria-label="ADR navigation"
+      aria-label="navigation"
     >
       <Drawer
         container={container}

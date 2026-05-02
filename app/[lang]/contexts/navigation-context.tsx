@@ -1,21 +1,11 @@
 'use client';
 
-import { createContext, useContext, useMemo, type ReactNode } from 'react';
-import { usePathname, useParams } from 'next/navigation';
-import { itemData as productItems } from '@/app/[lang]/products/products-list';
-import { itemData as companyItems } from '@/app/[lang]/companies/companies-list';
-import { itemData as serviceItems } from '@/app/[lang]/services/services-list';
-import { itemData as appItems } from '@/app/[lang]/apps/applications-list';
+import { createContext, useContext, type ReactNode } from 'react';
+import { useParams } from 'next/navigation';
 
 type Dictionary = Record<string, string>;
 
-export type ListItem = { title: string; slug: string };
-
 type NavigationContextValue = {
-  currentProduct: ListItem | undefined;
-  currentCompany: ListItem | undefined;
-  currentService: ListItem | undefined;
-  currentApp: ListItem | undefined;
   localize: (href: string) => string;
   dict: Dictionary;
 };
@@ -29,7 +19,6 @@ export function NavigationProvider({
   children: ReactNode;
   dict: Dictionary;
 }) {
-  const pathname = usePathname();
   const { lang } = useParams() as { lang: string };
 
   const getLocalizedHref = (href: string): string => {
@@ -39,35 +28,7 @@ export function NavigationProvider({
     return `/${lang}${href}`;
   };
 
-  const currentProduct = useMemo(() => {
-    if (!pathname.includes('/products/')) return undefined;
-    const itemSlug = pathname.split('/products/')[1];
-    return productItems.find((item) => item.slug === itemSlug);
-  }, [pathname]);
-
-  const currentCompany = useMemo(() => {
-    if (!pathname.includes('/companies/')) return undefined;
-    const itemSlug = pathname.split('/companies/')[1];
-    return companyItems.find((item) => item.slug === itemSlug);
-  }, [pathname]);
-
-  const currentService = useMemo(() => {
-    if (!pathname.includes('/services/')) return undefined;
-    const itemSlug = pathname.split('/services/')[1];
-    return serviceItems.find((item) => item.slug === itemSlug);
-  }, [pathname]);
-
-  const currentApp = useMemo(() => {
-    if (!pathname.includes('/apps/')) return undefined;
-    const itemSlug = pathname.split('/apps/')[1];
-    return appItems.find((item) => item.slug === itemSlug);
-  }, [pathname]);
-
   const value: NavigationContextValue = {
-    currentProduct,
-    currentCompany,
-    currentService,
-    currentApp,
     localize: getLocalizedHref,
     dict,
   };

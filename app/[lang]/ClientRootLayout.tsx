@@ -69,7 +69,7 @@ export default function ClientRootLayout({
               <DrawerHeader />
               {/* <ADRBreadcrumbs dict={dict} /> */}
               {children}
-              <ADRBottomNav />
+              {/* <ADRBottomNav /> */}
             </StyledMain>
           </Box>
         </NavigationProvider>
